@@ -1,0 +1,52 @@
+<UserControl
+    x:Class="VisionFarm.UI.Pages.MenuSettingsPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:converters="using:VisionFarm.UI.Converters"
+    xmlns:vm="using:VisionFarm.UI.ViewModels"
+    d:DesignWidth="800" d:DesignHeight="450"
+    x:DataType="vm:MenuSettingsViewModel"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:IconFromResourceConverter x:Key="IconConverter" />
+    </UserControl.Resources>
+    
+    <Grid Margin="8,16,0,0">
+        <Grid RowDefinitions="8*,3*">
+            <ScrollViewer>
+                <ItemsControl ItemsSource="{Binding MenuItems}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Spacing="6" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsSelected}" />
+                                <u:IconToggleButton Icon="{Binding IconName, Converter={StaticResource IconConverter}}"
+                                                    Classes="Small"
+                                                    IsChecked="{Binding IsSelected}"
+                                                    Content="{Binding MenuHeader}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <StackPanel Margin="0,16,0,0" Grid.Row="1">
+                <u:Form LabelPosition="Top" LabelWidth="*">
+                    <Button Content="保存"
+                            Theme="{DynamicResource SolidButton}"
+                            Classes="ClearButton RevealPasswordButton"
+                            u:FormItem.NoLabel="True"
+                            HorizontalAlignment="Stretch"
+                            Command="{Binding SubmitCommand}"/>
+                </u:Form>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,31 @@
+<UserControl
+    x:Class="VisionFarm.UI.Pages.WorkbenchPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:controls="using:VisionFarm.UI.Controls"
+    xmlns:vm="using:VisionFarm.UI.ViewModels"
+    xmlns:converters="using:VisionFarm.UI.Converters"
+    xmlns:behaviors="using:VisionFarm.UI.Behaviors"
+    d:DesignWidth="800" d:DesignHeight="450"
+    x:DataType="vm:WorkbenchViewModel"
+    mc:Ignorable="d">
+
+    <Grid ColumnDefinitions="*,*">
+         <StackPanel>
+             <Button Content="播放" Command="{Binding PlayCommand}" />
+             <!--<controls:SkiaCanvas Source="{Binding VideoImage}" FrameVersion="{Binding VideoImageVersion}" Stretch="Uniform"  Width="480" Height="360" />-->
+             <controls:VideoSkiaCanvas Source="{Binding VideoImage}" Interval="30" Stretch="Uniform"  Width="480" Height="360" />
+             <controls:SkiaCanvas Source="{Binding VideoFrame}" FrameVersion="{Binding VideoFrameVersion}" Width="480" Height="360" Margin="0,8,0,0" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+            <Button Content="随机检测" Command="{Binding ShowDetectionCommand}" />
+            <StackPanel Orientation="Horizontal" Spacing="2">
+                <controls:SkiaCanvas Source="{Binding DetectionFrame}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

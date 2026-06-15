@@ -1,0 +1,66 @@
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:controls="using:VisionFarm.UI.Controls"
+    xmlns:converters="using:Avalonia.Controls.Converters">
+
+    <ControlTheme x:Key="{x:Type controls:Led}" TargetType="controls:Led">
+        <ControlTheme.Resources>
+            <converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+        </ControlTheme.Resources>
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Panel.Resources>
+                        <SolidColorBrush x:Key="On" Color="Yellow" />
+                        <SolidColorBrush x:Key="Off" Color="DimGray" />
+                    </Panel.Resources>
+                    <Panel.Styles>
+                        <Style Selector="Ellipse.off">
+                            <Setter Property="Fill" Value="{Binding OffColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Style>
+                        <Style Selector="Ellipse.good">
+                            <Setter Property="Fill" Value="{Binding GoodColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Style>
+                        <Style Selector="Ellipse.bad">
+                            <Setter Property="Fill" Value="{Binding BadColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Style>
+                        <Style Selector="Ellipse.blinking">
+                            <Style.Animations>
+                                <Animation Duration="{Binding BlinkInterval, RelativeSource={RelativeSource TemplatedParent}}"
+                                           Delay="0:0:0.5"
+                                           IterationCount="Infinite"
+                                           Easing="ExponentialEaseInOut">
+                                    <KeyFrame Cue="0%">
+                                        <Setter Property="Fill" Value="{StaticResource On}"/>
+                                    </KeyFrame>
+                                    <KeyFrame Cue="100%">
+                                        <Setter Property="Fill" Value="{StaticResource Off}"/>
+                                    </KeyFrame>
+                                </Animation>
+                            </Style.Animations>
+                        </Style>
+                    </Panel.Styles>
+
+                    <Ellipse
+                        Classes.off="{Binding State, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static controls:LedState.Off}}"
+                        Classes.blinking="{Binding State, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static controls:LedState.Blinking}}"
+                        Classes.good="{Binding State, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static controls:LedState.Good}}"
+                        Classes.bad="{Binding State, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static controls:LedState.Bad}}"
+                        Width="{Binding Diameter, RelativeSource={RelativeSource TemplatedParent}}"
+                        Height="{Binding Diameter, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <TextBlock 
+                        Text="{TemplateBinding Text}"
+                        Foreground="{TemplateBinding TextColor}"
+                        FontSize="{TemplateBinding TextFontSize}"
+                        TextAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
