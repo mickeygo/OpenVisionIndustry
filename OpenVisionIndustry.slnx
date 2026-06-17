@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/VisionIndustry.Common/VisionIndustry.Common.csproj" Id="dae903ce-36c3-471e-9e7c-62225c60f685" />
+    <Project Path="src/VisionIndustry.Desktop/VisionIndustry.Desktop.csproj" Id="acfa50c0-eba1-4155-ae14-1db507444391" />
+    <Project Path="src/VisionIndustry.OCR/VisionIndustry.OCR.csproj" Id="cb2490ac-9a79-4ff2-b15c-f726a9a1ad8f" />
+    <Project Path="src/VisionIndustry.Runtime/VisionIndustry.Runtime.csproj" Id="ddd349d0-df6a-4e1a-adc4-cb42aa1cf1d1" />
+    <Project Path="src/VisionIndustry.UI/VisionIndustry.UI.csproj" Id="441ec072-23d0-42f9-92a3-40a5dcc18c50" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/VisionIndustry.Common.UnitTests/VisionIndustry.Common.UnitTests.csproj" Id="4bd4747b-2e77-4f41-8669-406de7e737e1" />
+  </Folder>
+</Solution>

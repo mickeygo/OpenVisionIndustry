@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="FFmpeg.AutoGen" />
+    <PackageReference Include="FFmpeg.AutoGen.Abstractions" />
+    <PackageReference Include="FFmpeg.AutoGen.Bindings.DynamicallyLoaded" />
+    <PackageReference Include="OpenCvSharp4" />
+    <PackageReference Include="OpenCvSharp4.official.runtime.linux-x64" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" />
+    <PackageReference Include="YoloDotNet" />
+    <PackageReference Include="YoloDotNet.ExecutionProvider.Cpu" />
+    <PackageReference Include="YoloDotNet.ExecutionProvider.Cuda" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\VisionIndustry.Common\VisionIndustry.Common.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="OpenCv\" />
+    <Folder Include="Operations\TargetDetection\" />
+  </ItemGroup>
+
+</Project>
